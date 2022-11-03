@@ -1,22 +1,23 @@
 <?php 
 class Caneta {
-	var $modelo;
-	var $cor;
-	var $ponta;
-	var $carga;
-	var $tampada;
-	function rabiscar() {
+	public $modelo;
+	public $cor;
+	private $ponta;
+	protected $carga;
+	protected $tampada;
+
+	public function rabiscar() {
 		if ($this->tampada == true) {
-			echo "Erro: Não posso rasbicar.";
+			echo "<br>Erro: Não posso rasbicar.";
 		} else
-			echo "Estou rabiscando";
+			echo "<br>Estou rabiscando";
 	}
 
-	function tampar() {
+	private function tampar() {
 		$this->tampada = true;
 	}
 
-	function destampar() {
+	protected function destampar() {
 		$this->tampada = false;
 	}
 }
