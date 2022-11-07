@@ -6,6 +6,11 @@
 	<title>Banco do Leonardo</title>
 	<link rel="stylesheet" type="text/css" href="style_banco.css">
 	<?php require_once 'banco.php'; ?>
+	<style type="text/css">
+		div#abrir {
+			visibility: show;
+		}
+	</style>
 </head>
 <body>
 <header>
@@ -18,7 +23,7 @@
 		<legend>Escolha a operação desejada</legend>
 		<select name="operacao">
 			<optgroup>
-				<option value="abrirConta" id="abrirConta">Abrir conta</option>
+				<!-- <option value="abrirConta" id="abrirConta">Abrir conta</option> -->
 				<option value="fecharConta" id="fecharConta">Fechar conta</option>
 				<option value="depositar" id="depositar">Depositar</option>
 				<option value="sacar" id="sacar">Sacar</option>
@@ -28,5 +33,8 @@
 	<button type="submit">Ir</button>
 	</fieldset>
 </form>
+<div id="abrir">
+	Abrir conta
+</div>
 </body>
 </html>

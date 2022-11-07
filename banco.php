@@ -103,6 +103,5 @@ class Banco {
 	public function getSaldo() {
 		return $this->saldo;
 	}
-	
 }
 ?>
