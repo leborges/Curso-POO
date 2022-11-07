@@ -19,6 +19,7 @@
 
 			// $c1->tampar();
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 			// $c2 = new Caneta();
 			// $c2->modelo = "Castle";
 			// $c2->cor = "Verde";
@@ -31,22 +32,36 @@
 			// print_r($c2);
 		
 #Aula 003
-			$c1 = new Caneta();
+			// $c1 = new Caneta();
 
-			$c1->modelo = "BIC Crystal";
-			$c1->cor = "Azul";
+			// $c1->modelo = "BIC Crystal";
+			// $c1->cor = "Azul";
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		#ERRO: Não podemos acessar variaveis que são declaradas privadas, só se estivermos dentro da mesma classe que ela
 			// $c1->ponta = 0.5;
 
 		#ERRO: Não podemos acessar variaveis que são declaradas protegidas
 			// $c1->carga = 50;
 			// $c1->tampada = true;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 			
-			print_r($c1);
+			// print_r($c1);
 
-			$c1->rabiscar();
-			$c1->tampar();
-			$c1->destampar();
+			// $c1->rabiscar();
+			// $c1->tampar();
+			// $c1->destampar();
+
+#Aula 004
+			// $c1 = new Caneta();
+			// $c1->setModelo("BIC");
+			// $c1->setPonta(0.5);
+
+			// echo "Eu tenho uma caneta {$c1->getModelo()} de ponta {$c1->getPonta()}.";
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+			$c1 = new Caneta("BIC", "Azul", 0.6);
+			$c2 = new Caneta("Faber Castle", "Vermelha", 1.0);
+			print_r($c1);
+			print_r($c2);
 		?>
 	</pre>
 </body>
