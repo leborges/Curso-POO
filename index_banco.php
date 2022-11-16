@@ -8,7 +8,7 @@
 	<?php require_once 'banco.php'; ?>
 	<style type="text/css">
 		div#abrir {
-			visibility: show;
+			
 		}
 	</style>
 </head>
