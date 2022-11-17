@@ -22,7 +22,7 @@
 				<option>Conta Salário</option>
 			</optgroup>
 		</select><br>
-		<button type="submit">Criar conta</button>
+		<button type="submit" formaction="">Criar conta</button>
 	</form>
 </article>
 <article id="fecharConta">fecharConta</article>
