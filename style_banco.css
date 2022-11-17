@@ -1,9 +1,23 @@
 body {
 	font-family: Arial, sans-serif;
 }
+body#noscroll {
+	overflow: hidden;
+}
 form {
 	width: 300px;
 }
 div {
 	margin-top: 20px;
+}
+iframe#frame-banco{
+	width: 900px;
+	height: 630px;
+	border: none;
+}
+article {
+	height: 1000px;
+}
+::-webkit-scrollbar{
+	display: none;
 }

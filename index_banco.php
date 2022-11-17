@@ -6,11 +6,6 @@
 	<title>Banco do Leonardo</title>
 	<link rel="stylesheet" type="text/css" href="style_banco.css">
 	<?php require_once 'banco.php'; ?>
-	<style type="text/css">
-		div#abrir {
-			
-		}
-	</style>
 </head>
 <body>
 <header>
@@ -18,12 +13,12 @@
 	<h3>Seja bem-vindo(a)</h3>	
 </header>
 
-<form id="operacao" method="GET">
+<form method="GET">
 	<fieldset>
 		<legend>Escolha a operação desejada</legend>
 		<select name="operacao">
 			<optgroup>
-				<!-- <option value="abrirConta" id="abrirConta">Abrir conta</option> -->
+				<option value="abrirConta" id="abrirConta">Abrir conta</option>
 				<option value="fecharConta" id="fecharConta">Fechar conta</option>
 				<option value="depositar" id="depositar">Depositar</option>
 				<option value="sacar" id="sacar">Sacar</option>
@@ -33,8 +28,39 @@
 	<button type="submit">Ir</button>
 	</fieldset>
 </form>
-<div id="abrir">
-	Abrir conta
-</div>
+
+<?php 
+$op = empty($_GET['operacao'])?"":$_GET['operacao'];
+	switch ($op) {
+		case 'abrirConta':
+			$txt = "Abrir conta";
+			break;
+		case 'fecharConta':
+			$txt = "Fechar conta";
+			break;
+		case 'depositar':
+			$txt = "Realizar um depósito";
+			break;
+		case 'sacar':
+			$txt = "Realizar um saque";
+			break;
+		case 'pagarMensalidade':
+			$txt = "Pagar a mensalidade";
+			break;
+		default:
+			$txt = "Favor selecionar operação";
+			break;
+	}
+?>
+
+<section id="exibe-operacao">
+	<hgroup>
+		<h1><?php echo $txt; ?></h1>
+		<h4><?php if ($txt != "") {
+			echo "Para prosseguir com a operação preencha os campos a seguir:";
+		} ?></h4>
+	</hgroup>
+	<iframe src="iframe_banco.php#<?php echo $op; ?>" name="operacao" id="frame-banco"></iframe>
+</section>
 </body>
 </html>
