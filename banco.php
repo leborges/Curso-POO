@@ -27,6 +27,7 @@
 <?php 
 class Banco {
 	public $num;
+	public $msgBox;
 	protected $tipo;
 	private $dono;
 	private $status;
@@ -58,7 +59,7 @@ class Banco {
 		} else if ($this->getStatus() == true && $this->saldo < 0) {
 			echo "Você deverá quitar sua divida de R$".number_format($this->saldo,2,',','.')." para fechar sua conta.";
 		} else
-			echo "Criar uma conta antes.";
+			echo "Crie uma conta antes na seção <i>Criar conta</i>";
 	}
 	public function depositar($dinheiro) {
 		$this->saldo += $dinheiro;
