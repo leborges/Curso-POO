@@ -5,7 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Frame do banco</title>
 	<link rel="stylesheet" type="text/css" href="style_banco.css">
-	<?php require_once 'banco.php'; ?>
+	<?php
+		require_once 'banco.php';
+		$p1 = new ContaBanco();
+	?>
 </head>
 <body id="noscroll">
 <header>
@@ -15,17 +18,24 @@
 	<article id="topo"></article>
 	<article id="abrirConta">
 		<form method="GET">
-			<!-- <label for="cConta">Conta </label> -->
 			<input type="number" name="tConta" id="cConta" maxlength="3" placeholder="Número da conta - 3 Digitos"><br>
-			<!-- <label for="cName">Nome completo </label> -->
 			<input type="text" name="tName" id="cName" placeholder="Seu nome completo"><br>
 			<label for="cTipo">Selecione o tipo de conta:</label><br><br>
-			<input type="radio" class="radio" name="tTipo" id="cc" value="cc">
-			<label for="cc">Conta Corrente</label><br>
-			<input type="radio" class="radio" name="tTipo" id="cp" value="cp">
-			<label for="cp">Conta Poupança</label>
+			<input type="radio" class="radio" name="tTipo" id="CC" value="CC" checked>
+			<label for="CC">Conta Corrente</label><br>
+			<input type="radio" class="radio" name="tTipo" id="CP" value="CP">
+			<label for="CP">Conta Poupança</label>
 			<div class="center">
-				<button type="submit">Criar conta</button>
+				<button type="submit" name="btnCriarConta">Criar conta</button>
+				<?php 
+					if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+						if (isset($_GET['btnCriarConta'])) {
+							$p1->abrirConta($_GET['tTipo']);
+							$p1->setDono($_GET['tName']);
+							$p1->setNum($_GET['tConta']);
+						}
+					}
+				 ?>
 			</div>
 		</form>
 	</article>
@@ -39,7 +49,7 @@
 		<div class="msgBox">
 			<?php 
 				if (isset($_REQUEST['fecharConta'])) {
-					$c1->fecharConta();
+					$p1->fecharConta();
 				};
 			 ?>
 		</div>

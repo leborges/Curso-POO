@@ -25,69 +25,88 @@
 # (+) pagarMensalidade() - (CC R$12 / CP R$20) -->
 
 <?php 
-class Banco {
+class ContaBanco {
 	public $num;
-	public $msgBox;
 	protected $tipo;
 	private $dono;
-	private $status;
 	private $saldo;
+	private $status;
 
+	
 	public function __construct() {
 		$this->setStatus(false);
 		$this->setSaldo(0);
 	}
-	public function abrirNovaConta($num, $dono, $tipo) {
+	
+	public function abrirConta($tipo) {
 		if ($this->getStatus() == false) {
-				$this->setStatus(true);
-				$this->setNum($num);
-				$this->setDono($dono);
+				echo "<p>Sua conta foi criada com sucesso.</p>";
 				$this->setTipo($tipo);
+				$this->setStatus(true);
 			if ($tipo == "CC") {
 				$this->setSaldo(50);
 			} else
 				$this->setSaldo(150);
 		} else
-			echo "A conta já foi criada.";
+			echo "<p>Sua conta já foi criada.</p>";
 	}
+	
 	public function fecharConta() {
 		if ($this->getStatus() == true && $this->saldo == 0) {
 			$this->setStatus(false);
-			echo "Sua conta foi encerrada com sucesso.";
+			echo "<p>Sua conta foi encerrada com sucesso.</p>";
 		} else if ($this->getStatus() == true && $this->saldo > 0) {
-			echo "Você deve sacar todo o dinheiro da conta antes de fecha-la.";
+			echo "<p>Você deve sacar todo o dinheiro da conta antes de fecha-la.<br>Atualmente seu saldo é de R$ ".number_format($this->getSaldo(),2,',','.')."</p>";
 		} else if ($this->getStatus() == true && $this->saldo < 0) {
-			echo "Você deverá quitar sua divida de R$".number_format($this->saldo,2,',','.')." para fechar sua conta.";
+			echo "<p>Sua conta está com um débito de R$ ".number_format($this->getSaldo(),2,',','.')."</p>";
 		} else
-			echo "Crie uma conta antes na seção <i>Criar conta</i>";
+			echo "<p>Crie uma conta antes na seção <i>Criar conta</i></p>";
 	}
+	
 	public function depositar($dinheiro) {
-		$this->saldo += $dinheiro;
+		if ($this->getStatus() == true) {
+			$this->setSaldo($this->getSaldo() + $dinheiro);
+		} else {
+			echo "<p>Sua conta ainda não foi criada.</p>";
+		}
 	}
+	
 	public function sacar($dinheiro) {
-		$this->saldo -= $dinheiro;
+		if ($this->getStatus() == true && $this->getSaldo() >= $dinheiro) {
+			$this->setSaldo($this->getSaldo() - $dinheiro);
+		} elseif ($this->getStatus() == false) {
+			echo "<p>Sua conta ainda não foi criada.</p>";
+		} else {
+			echo "<p>Você não possui saldo para efetuar este saque.<br>Atualmente seu saldo é de R$ ".number_format($this->getSaldo(),2,',','.')."</p>";
+		}
 	}
+	
 	public function pagarMensalidade() {
-		if ($this->getTipo() == "CP") {
-			$this->saldo -= 20;
+		$v = 0;
+		if ($this->getStatus() == true) {
+			if ($this->getTipo() == "CP") {
+				$v = 20;
+			} else
+				$v = 12;
+			$this->setSaldo($this->getSaldo() - $v);
 		} else
-			$this->saldo -= 12;
+			echo "<p>Sua conta ainda não foi criada.</p>";
 	}
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-	public function setNum($num1) {
-		$this->num = $num1;
+	public function setNum($num) {
+		$this->num = $num;
 	}
-	public function setTipo($tipo1) {
-		$this->tipo = $tipo1;
+	public function setTipo($tipo) {
+		$this->tipo = $tipo;
 	}
-	public function setDono($dono1) {
-		$this->dono = $dono1;
+	public function setDono($dono) {
+		$this->dono = $dono;
 	}
-	public function setStatus($status1) {
-		$this->status = $status1;
+	public function setStatus($status) {
+		$this->status = $status;
 	}
-	public function setSaldo($saldo1) {
-		$this->saldo = $saldo1;
+	public function setSaldo($saldo) {
+		$this->saldo = $saldo;
 	}
 	public function getNum() {
 		return $this->num;
