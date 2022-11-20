@@ -5,6 +5,11 @@ class Pessoa {
 	private $idade;
 	private $sexo;
 # - - - - - - - - - - - - - - - MÉTODOS ESPECIAIS - - - - - - - - - - - - - - - - -
+	function __construct($nome, $idade, $sexo) {
+		$this->nome = $nome;
+		$this->idade = $idade;
+		$this->sexo = $sexo;
+	}
 # - - - - - - - - - - - - - - - GETTERS & SETTERS - - - - - - - - - - - - - - - - -
 	public function setNome($nome) {
 		$this->nome = $nome;
@@ -26,7 +31,7 @@ class Pessoa {
 	}
 # - - - - - - - - - - - - - - - - - MÉTODOS - - - - - - - - - - - - - - - - - - - -
 	public function fazerAniver() {
-		$this->setIdade(getIdade() + 1);
+		$this->idade++;
 	}
 }
 ?>
