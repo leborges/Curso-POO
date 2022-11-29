@@ -1,7 +1,5 @@
 <?php 
-require_once 'controlador.php';
-
-class Lutador implements Controlador {
+class Lutador {
 
 # - - - - - - - - - - - - - - - - - ATRIBUTOS - - - - - - - - - - - - - - - - - - -
 
