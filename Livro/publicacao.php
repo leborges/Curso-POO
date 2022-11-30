@@ -1,9 +1,9 @@
 <?php
 interface Publicacao {
-	public functionn abrir();
-	public functionn fechar();
-	public functionn folhear();
-	public functionn avancarPag();
-	public functionn voltarPag();
+	public function abrir();
+	public function fechar();
+	public function folhear($p);
+	public function avancarPag();
+	public function voltarPag();
 }
 ?>
