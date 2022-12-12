@@ -9,6 +9,7 @@
 		require_once 'reptil.php';
 		require_once 'peixe.php';
 		require_once 'ave.php';
+		require_once 'lobo.php';
 		require_once 'arara.php';
 		require_once 'canguru.php';
 		require_once 'cachorro.php';
@@ -19,6 +20,7 @@
 </head>
 <body>
 	<?php
+# - - - - - - - - - - - - - SOBREESCREVER - - - - - - - - - - - - - -
 		$m = new Mamifero();
 		$r = new Reptil();
 		$p = new Peixe();
@@ -65,6 +67,15 @@
 		$h->locomover();
 	echo "O <b>goldfish</b> se locomove: ";
 		$g->locomover();
+# - - - - - - - - - - - - - SOBRECARGA - - - - - - - - - - - - - -
+		$k->reagirFrase("Olá");
+		$k->reagirFrase("Busca graveto");
+		$k->reagirDono(true);
+		$k->reagirDono(false);
+		$k->reagirHora(11, 00);
+		$k->reagirHora(21, 00);
+		$k->reagirIdadePeso(1, 15);
+		$k->reagirIdadePeso(12, 5);
 	?>
 </body>
 </html>
